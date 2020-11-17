@@ -8,13 +8,16 @@
     android:background="@color/white"
     tools:context=".MainActivity">
 
+
     <TextView
-        android:id="@+id/expressao"
+        android:id="@+id/tv_expression"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:textColor="@color/black"
-        android:textSize="40sp"
+        android:textSize="20sp"
         android:layout_marginEnd="10dp"
+        android:lines="10"
+        android:maxLines="10"
         android:gravity="end"
         android:ellipsize="start"
         android:singleLine="true"
@@ -22,9 +25,9 @@
     />
 
     <TextView
-        android:id="@+id/resultado"
+        android:id="@+id/tv_result"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:textColor="@color/black"
         android:textSize="30sp"
         android:layout_marginEnd="10dp"
@@ -32,23 +35,103 @@
         android:ellipsize="end"
         android:maxLines="1"
         />
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.8"
         android:orientation="horizontal">
-        
+
         <TextView
-            android:id="@+id/limpar"
+            android:id="@+id/btn_clean"
             style="@style/Operators_button"
             android:text="C"/>
 
         <TextView
-            android:id="@+id/divisao"
+            android:id="@+id/btn_div"
             style="@style/Operators_button"
             android:text="/"/>
+
+        <TextView
+            android:id="@+id/btn_potencia"
+            style="@style/Operators_button"
+            android:text="^" />
+
+        <TextView
+            android:id="@+id/btn_sqrt"
+            style="@style/Operators_button"
+            android:text="SQR" />
+
+        <TextView
+            android:id="@+id/btn_modulo"
+            style="@style/Operators_button"
+            android:text="MD" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/btn_logaritmo"
+            style="@style/Operators_button"
+            android:text="log" />
+
+        <TextView
+            android:id="@+id/btn_seno"
+            style="@style/Operators_button"
+            android:text="sen" />
+
+        <TextView
+            android:id="@+id/btn_cosseno"
+            style="@style/Operators_button"
+            android:text="cos" />
+
+        <TextView
+            android:id="@+id/btn_tangente"
+            style="@style/Operators_button"
+            android:text="tag" />
+
+        <TextView
+            android:id="@+id/btn_logaritmoNatural"
+            style="@style/Operators_button"
+            android:text="logN" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/btn_inverso_seno"
+            style="@style/Operators_button"
+            android:text="Isen" />
+
+        <TextView
+            android:id="@+id/btn_inverso_coseno"
+            style="@style/Operators_button"
+            android:text="Icos" />
+
+        <TextView
+            android:id="@+id/btn_inverso_tangente"
+            style="@style/Operators_button"
+            android:text="Itan" />
+
+        <TextView
+            android:id="@+id/btn_change_sinal"
+            style="@style/Operators_button"
+            android:text="+/-" />
+
+
+    </LinearLayout>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -57,22 +140,22 @@
         android:layout_weight="1" >
 
         <TextView
-            android:id="@+id/numero_sete"
+            android:id="@+id/btn_num_seven"
             style="@style/Numbers_button"
             android:text="7"/>
 
         <TextView
-            android:id="@+id/numero_oito"
+            android:id="@+id/btn_num_eight"
             style="@style/Numbers_button"
             android:text="8"/>
 
         <TextView
-            android:id="@+id/numero_nove"
+            android:id="@+id/btn_num_nine"
             style="@style/Numbers_button"
             android:text="9"/>
 
         <TextView
-            android:id="@+id/multiplicacao"
+            android:id="@+id/btn_mult"
             style="@style/Operators_button"
             android:text="x"/>
 
@@ -85,22 +168,22 @@
         android:layout_weight="1" >
 
         <TextView
-            android:id="@+id/numero_quatro"
+            android:id="@+id/btn_num_four"
             style="@style/Numbers_button"
             android:text="4"/>
 
         <TextView
-            android:id="@+id/numero_cinco"
+            android:id="@+id/btn_num_five"
             style="@style/Numbers_button"
             android:text="5"/>
 
         <TextView
-            android:id="@+id/numero_seis"
+            android:id="@+id/btn_num_six"
             style="@style/Numbers_button"
             android:text="6"/>
 
         <TextView
-            android:id="@+id/subtrcao"
+            android:id="@+id/btn_sub"
             style="@style/Operators_button"
             android:text="-"/>
 
@@ -113,22 +196,22 @@
         android:layout_weight="1" >
 
         <TextView
-            android:id="@+id/numero_um"
+            android:id="@+id/btn_num_one"
             style="@style/Numbers_button"
             android:text="1"/>
 
         <TextView
-            android:id="@+id/numero_dois"
+            android:id="@+id/btn_num_two"
             style="@style/Numbers_button"
             android:text="2"/>
 
         <TextView
-            android:id="@+id/numero_tres"
+            android:id="@+id/btn_num_three"
             style="@style/Numbers_button"
             android:text="3"/>
 
         <TextView
-            android:id="@+id/soma"
+            android:id="@+id/btn_sum"
             style="@style/Operators_button"
             android:text="+"/>
 
@@ -141,22 +224,23 @@
         android:layout_weight="1" >
 
         <TextView
-            android:id="@+id/ponto"
+            android:id="@+id/btn_dot"
             style="@style/Numbers_button"
             android:text="."/>
 
         <TextView
-            android:id="@+id/numero_zero"
+            android:id="@+id/btn_num_zero"
             style="@style/Numbers_button"
             android:text="0"/>
 
-        <TextView
-            android:id="@+id/backspace"
+        <ImageView
+            android:id="@+id/btn_backspace"
             style="@style/Numbers_button"
-            android:text="backspace"/>
+            android:src="@drawable/backspace"
+            android:scaleType="center"/>
 
         <TextView
-            android:id="@+id/igual"
+            android:id="@+id/btn_equal"
             style="@style/Operators_button"
             android:text="="/>
 
