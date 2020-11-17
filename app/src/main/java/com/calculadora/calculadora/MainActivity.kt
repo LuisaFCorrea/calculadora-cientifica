@@ -7,31 +7,34 @@ import net.objecthunter.exp4j.ExpressionBuilder
 import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
+    @ExperimentalStdlibApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        var tela: MutableList<String> = mutableListOf("")
+
         supportActionBar!!.hide()
 
         //set numbers value
-        btn_num_zero.setOnClickListener {AddExpression("0", true)}
-        btn_num_one.setOnClickListener {AddExpression("1", true)}
-        btn_num_two.setOnClickListener {AddExpression("2", true)}
-        btn_num_three.setOnClickListener {AddExpression("3", true)}
-        btn_num_four.setOnClickListener {AddExpression("4", true)}
-        btn_num_five.setOnClickListener {AddExpression("5", true)}
-        btn_num_six.setOnClickListener {AddExpression("6", true)}
-        btn_num_seven.setOnClickListener {AddExpression("7", true)}
-        btn_num_eight.setOnClickListener {AddExpression("8", true)}
-        btn_num_nine.setOnClickListener {AddExpression("9", true)}
-        btn_dot.setOnClickListener {AddExpression(".", true)}
+        btn_num_zero.setOnClickListener {AddExpression("0", true, tela)}
+        btn_num_one.setOnClickListener {AddExpression("1", true, tela)}
+        btn_num_two.setOnClickListener {AddExpression("2", true, tela)}
+        btn_num_three.setOnClickListener {AddExpression("3", true, tela)}
+        btn_num_four.setOnClickListener {AddExpression("4", true, tela)}
+        btn_num_five.setOnClickListener {AddExpression("5", true, tela)}
+        btn_num_six.setOnClickListener {AddExpression("6", true, tela)}
+        btn_num_seven.setOnClickListener {AddExpression("7", true, tela)}
+        btn_num_eight.setOnClickListener {AddExpression("8", true, tela)}
+        btn_num_nine.setOnClickListener {AddExpression("9", true, tela)}
+        btn_dot.setOnClickListener {AddExpression(".", true, tela)}
 
         //set operator value
-        btn_sum.setOnClickListener {AddExpression("+", false)}
-        btn_sub.setOnClickListener {AddExpression("-", false)}
-        btn_mult.setOnClickListener {AddExpression("*", false)}
-        btn_div.setOnClickListener {AddExpression("/", false)}
-        btn_potencia.setOnClickListener{AddExpression("^", false)}
+        btn_sum.setOnClickListener {AddExpression("+", false, tela)}
+        btn_sub.setOnClickListener {AddExpression("-", false, tela)}
+        btn_mult.setOnClickListener {AddExpression("*", false, tela)}
+        btn_div.setOnClickListener {AddExpression("/", false, tela)}
+        btn_potencia.setOnClickListener{AddExpression("^", false, tela)}
         btn_tangente.setOnClickListener{CalculosComplexos("tan")}
         btn_logaritmo.setOnClickListener{CalculosComplexos("log10")}
         btn_logaritmoNatural.setOnClickListener{CalculosComplexos("log")}
@@ -194,20 +197,47 @@ class MainActivity : AppCompatActivity() {
     }
 
     //write at expression view
-    fun AddExpression(string: String, clean_data: Boolean){
+    @ExperimentalStdlibApi
+    fun AddExpression(string: String, limpar_dados: Boolean, listaAtual: MutableList<String>){
 
         if(tv_result.text.isNotEmpty()){
+            var texto: String
+
+            texto = this.resultTela(listaAtual, tv_expression.text.toString());
+            tv_historico.text = "\n "+texto+" \n";
+
             tv_expression.text = ""
+
         }
 
-        if(clean_data){
+        if(limpar_dados){
             tv_result.text = ""
             tv_expression.append(string)
-        } else {
+        }else{
             tv_expression.append(tv_result.text)
             tv_expression.append(string)
             tv_result.text = ""
         }
+    }
 
+
+    @ExperimentalStdlibApi
+    fun resultTela(listaAtual: MutableList<String>, operacao: String): String {
+        var retorno = "";
+        if(listaAtual.size == 10){
+            listaAtual.removeFirst();
+        }
+        if(!listaAtual.last().contains("\n")){
+            listaAtual[listaAtual.size-1] = listaAtual.last() + operacao;
+        }else{
+            listaAtual.add(operacao)
+        }
+
+
+        for(x in listaAtual){
+            retorno = retorno + x
+        }
+
+        return retorno;
     }
 }
